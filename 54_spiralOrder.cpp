@@ -21,7 +21,7 @@ vector<int> spiralOrder(vector<vector<int>>& matrix) {
     for(;;){
         for(int i = l;i<=r;i++)//向右
             ans.push_back(matrix[u][i]);
-        if(++u >d) break;
+        if(++u >d) break;//检测下一步要走的方向是否到达边界
         for(int i = u;i<=d;i++)//向下
             ans.push_back(matrix[i][r]);
         if(--r<l) break;
