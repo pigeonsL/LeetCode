@@ -1,19 +1,17 @@
 #include <iostream>
-#include <windows.h>
-
 using namespace std;
 
-//ÀÁºº
+//æ‡’æ±‰
 /* 
 class Singleton
 {
 private:
     static Singleton* m_Instance;
     Singleton(){
-        cout<<"¹¹Ôìº¯Êý¡£¡£¡£"<<endl;
+        cout<<"æž„é€ å‡½æ•°ã€‚ã€‚ã€‚"<<endl;
     }
     ~Singleton(){
-        cout<<"Îö¹¹º¯Êý¡£¡£¡£"<<endl;
+        cout<<"æžæž„å‡½æ•°ã€‚ã€‚ã€‚"<<endl;
     }
 public:
     static Singleton* GetInstance(){
@@ -23,33 +21,29 @@ public:
     }
 };
 */
-//¸Õ¸ÕµÄ´úÂëÖÐÓÐÁ½¸öÎÊÌâ£¬Ò»¸öÊÇ¶àÏß³ÌµÄÇé¿öÏÂ¿ÉÄÜ»á³öÏÖnewÁ½´ÎµÄÇé¿ö¡£ÁíÍâÒ»¸öÊÇ³ÌÐòÍË³öºóÃ»ÓÐÔËÐÐÎö¹¹º¯Êý¡£
-//ÏÂÃæ²ÉÓÃÁË¾²Ì¬¶ÔÏóÀ´½â¾ö¡£
+//åˆšåˆšçš„ä»£ç ä¸­æœ‰ä¸¤ä¸ªé—®é¢˜ï¼Œä¸€ä¸ªæ˜¯å¤šçº¿ç¨‹çš„æƒ…å†µä¸‹å¯èƒ½ä¼šå‡ºçŽ°newä¸¤æ¬¡çš„æƒ…å†µã€‚å¦å¤–ä¸€ä¸ªæ˜¯ç¨‹åºé€€å‡ºåŽæ²¡æœ‰è¿è¡Œæžæž„å‡½æ•°ã€‚
+//ä¸‹é¢é‡‡ç”¨äº†é™æ€å¯¹è±¡æ¥è§£å†³ã€‚
 class Singleton
 {
 private:
     static Singleton* m_Instance;
     Singleton(){
-        cout<<"¹¹Ôìº¯Êý¡£¡£¡£"<<endl;
+        cout<<"Singleton()..."<<endl;
     }
     ~Singleton(){
-        cout<<"Îö¹¹º¯Êý¡£¡£¡£"<<endl;
+        cout<<"~Singleton()..."<<endl;
     }
 public:
     static Singleton* GetInstance(){
-        static Singleton m_s;
+        static Singleton m_s;//é™æ€å¯¹è±¡
         return &m_s;
     }
 };
 Singleton* Singleton::m_Instance = NULL;
 
 int main(){
-
-    cout << "µ¥ÀýÄ£Ê½·ÃÎÊµÚÒ»´ÎÇ°" << endl;
     Singleton * s = Singleton::GetInstance();
-    cout << "µ¥ÀýÄ£Ê½·ÃÎÊµÚÒ»´Îºó" << endl;
-    cout << "µ¥ÀýÄ£Ê½·ÃÎÊµÚ¶þ´ÎÇ°" << endl;
-    Singleton * s2 = Singleton::GetInstance();//²»»á´´½¨¶ÔÏó
-    cout << "µ¥ÀýÄ£Ê½·ÃÎÊµÚ¶þ´Îºó" << endl;
+    Singleton * s2 = Singleton::GetInstance();//ä¸ä¼šåˆ›å»ºå¯¹è±¡
+    system("pause");
     return 0;
 }
