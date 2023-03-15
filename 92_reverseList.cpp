@@ -1,29 +1,25 @@
 /*反转链表 */
 #include <iostream>
 
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+struct Node {
+  int val;
+  Node* next;
 };
-class Solution {
-public:
-    ListNode* reverseBetween(ListNode* head, int m, int n) {
-        ListNode* dummy=new ListNode(-1);
-        ListNode* pre=dummy;
-        dummy->next=head;
-        
-        for(int i=1;i<m;i++)
-            pre=pre->next;//pre用来标记m位置的前一个节点，将作为反转之后的头结点
-
-        ListNode* cur=pre->next;
-        for(int i=m;i<n;i++){
-            ListNode* t=cur->next;
-            cur->next=t->next;
-            t->next=pre->next;
-            pre->next=t;
-        }
-        return dummy->next;
-    }
-};
+Node* reverseList(Node* head) {
+  if (head == nullptr) {
+    return head;
+  }
+  Node* pre = head;
+  Node* cur = pre->next;
+  Node* next;
+  while (cur) {
+    next = cur->next;
+    cur->next = pre;
+    pre = cur;
+    cur = next;
+  }
+  head->next = nullptr;
+  head = pre;
+  return head;
+}
 
